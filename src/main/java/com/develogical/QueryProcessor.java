@@ -24,7 +24,7 @@ public class QueryProcessor {
             Matcher m = p.matcher(query);
             Integer largest = -2147483648;
             while(m.find()) {
-                curr = m.group();
+                Integer curr = m.group();
                 if (curr > largest) {
                     largest = curr;
                 }
