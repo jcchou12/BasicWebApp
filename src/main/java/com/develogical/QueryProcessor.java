@@ -1,4 +1,6 @@
 package com.develogical;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class QueryProcessor {
 
@@ -17,6 +19,19 @@ public class QueryProcessor {
         if (query.toLowerCase().contains("find")) {
             return "Searching";
         }
+        if (query.toLowerCase().contains("largest")){
+            Pattern p = Pattern.compile("\\d+");
+            Matcher m = p.matcher(query);
+            Integer largest = -2147483648;
+            while(m.find()) {
+                curr = m.group();
+                if (curr > largest) {
+                    largest = curr;
+                }
+            }
+            return largest;
+        }
+        
         return "";
     }
 }
